@@ -36,5 +36,11 @@ item::item(int x, int y)
 		type = 0;
 
 	}
+	value = y;
+}
 
+item::item()
+{
+	type = 0;
+	value = 0;
 }

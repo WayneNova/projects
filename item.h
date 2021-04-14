@@ -8,7 +8,7 @@ using namespace std; // So "std::cout" may be abbreviated to "cout"
 
 class item {
 
-private: 
+private:
 
 	int type;
 	int value;
@@ -19,6 +19,5 @@ public:
 	bool isDefense() const;
 	int getValue() const;
 	item(int x, int y);
-
-
+	item();
 };

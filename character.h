@@ -8,12 +8,12 @@ using namespace std; // So "std::cout" may be abbreviated to "cout"
 
 class character {
 
-protected: 
+protected:
 
 	int hp;
 	int attackPower;
 
-public: 
+public:
 
 	int getHp() const;
 	void setHp(int h);
