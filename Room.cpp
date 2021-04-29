@@ -1,6 +1,4 @@
 #include "Room.h"
-#include "Monster.h"
-#include "Item.h"
 #include <vector>
 #include <cstdlib>
 #include <fstream>
@@ -81,7 +79,7 @@ item* Room::getRoomItem() const
 
 bool Room::isExit()
 {
-	if (exit)
+	if (exit == true)
 	{
 		return true;
 	}
@@ -97,6 +95,7 @@ Room::Room(string na, Room* n, Room* s, Room* e, Room* w, Monster* m, item* i)
 	west = w;
 	setRoomMonster(m);
 	setRoomItem(i);
+	exit = 0;
 }
 
 Room::Room(string na, Room* n, Room* s, Room* e, Room* w, Monster* m)
@@ -107,6 +106,7 @@ Room::Room(string na, Room* n, Room* s, Room* e, Room* w, Monster* m)
 	east = e;
 	west = w;
 	setRoomMonster(m);
+	exit = 0;
 }
 
 Room::Room(string na, Room* n, Room* s, Room* e, Room* w, item* i)
@@ -117,6 +117,7 @@ Room::Room(string na, Room* n, Room* s, Room* e, Room* w, item* i)
 	east = e;
 	west = w;
 	setRoomItem(i);
+	exit = 0;
 }
 
 Room::Room(string na, Room* n, Room* s, Room* e, Room* w, bool ex)

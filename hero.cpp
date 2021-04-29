@@ -13,13 +13,15 @@ int hero::getDefensePower() const
 
 void hero::decreaseDefensePower()
 {
-
+	if (defensePower > 1)
+	{
+		defensePower--;
+	}
 }
 
 void hero::setDefensePower(int s) {
 
 	defensePower = s;
-
 }
 
 int hero::getRetreatCount() const
@@ -34,26 +36,64 @@ void hero::decreaseRetreatCount()
 
 bool hero::anyItems() const
 {
-	return false;
+	int count = 0;
+	for (int i = 0; i < 3; i++)
+	{
+		if (bag[i] == NULL)
+			count++;
+		
+	};
+	if (count ==3)
+	{
+		return false;
+	}
+	return true;
 }
 
 bool hero::isAlive() const
 {
-	return false;
+	if (hp > 0)
+	{
+		return 1;
+	}
+	else
+	{
+		return 0;
+	}
 }
 
  hero::hero(int a, int b , int c, int d) {
 
 	 defensePower = a;
 	 retreatCount = b;
-	 hp = c;
-	 attackPower = d;
-
-	 bag[3] = { NULL };
-
+	 setHp(c);
+	 setAttackPower(d);
+	 for (int i = 0; i < 3; i++)
+	 {
+		 bag[i] = NULL;
+	 }
 }
 
-int hero::operator*(Monster& m)
+ hero::hero():character()
+ {
+	 defensePower = 0;
+	 retreatCount = 0;
+	 for (int i = 0; i < 3; i++)
+	 {
+		 bag[i] = NULL;
+	 }
+ }
+
+int hero::operator * (Monster& m)
 {
-	return 0;
+	m.setHp(m.getHp() - getAttackPower() < 0 ? 0 : m.getHp() - getAttackPower());
+	setHp(getHp() - (m.getAttackPower() / getDefensePower()));
+	m.decreaseAttackPower();
+	decreaseDefensePower();
+	if (getHp() == 0) // hero died
+		return -1;
+	else if (m.getHp() == 0)  // monster died
+		return 1;
+	else   // no character died
+		return 0;
 }

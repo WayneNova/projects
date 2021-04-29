@@ -6,26 +6,16 @@
 #include <string> // For string data type
 #include "character.h"
 #include "item.h"
+#include "Monster.h"
 using namespace std; // So "std::cout" may be abbreviated to "cout"
 
 class hero : public character {
-
-	//int getHp() const;
-	//void setHp(int h);
-	//int getAttackPower() const;
-	//void setAttackPower(int a);
-	//character();
-
 private:
 
 	int defensePower;
 	int retreatCount;
-
-
 public:
-	
 	item * bag[3];
-
 	int getDefensePower() const;
 	void decreaseDefensePower();
 	void setDefensePower(int s);
@@ -34,6 +24,6 @@ public:
 	bool anyItems() const;
 	bool isAlive() const;
 	hero(int a, int b, int c, int d);
-
-
+	hero();
+	int operator * (Monster& m);
 };

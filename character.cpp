@@ -17,8 +17,7 @@ void character::setHp(int h) {
 
 	if (hp < 0) {
 
-		hp;
-
+		hp = 0;
 	}
 }
 
@@ -31,12 +30,10 @@ int character::getAttackPower() const {
 void character::setAttackPower(int a) {
 
 	attackPower = a;
-
 }
 
 character::character() {
 
-	hp = 10;
-	attackPower = 1;
-
+	hp = 0;
+	attackPower = 0;
 }
